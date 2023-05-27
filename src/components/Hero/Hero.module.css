@@ -1,0 +1,22 @@
+.HeroComponent {
+}
+.bg {
+  background: linear-gradient(270deg, #b4cf4a, #4cadb4, #f07321, #eb9bba);
+  background-size: 800% 800%;
+
+  -webkit-animation: bg 5s ease infinite;
+  -moz-animation: bg 5s ease infinite;
+  animation: bg 5s ease infinite;
+}
+
+@keyframes bg {
+  0% {
+    background-position: 0% 5%;
+  }
+  50% {
+    background-position: 100% 96%;
+  }
+  100% {
+    background-position: 0% 5%;
+  }
+}
