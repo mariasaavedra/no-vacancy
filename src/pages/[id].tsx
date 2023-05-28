@@ -21,7 +21,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="m-8 columns-2">
+      <section className="m-8 columns-1 md:columns-2">
         <PropertyPage id={_id} />;
       </section>
     </>

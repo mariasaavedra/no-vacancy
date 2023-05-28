@@ -10,13 +10,27 @@ export default function HomePage() {
   const api_key = "TucP0tg7Qi2Gp4ET";
   const uuid = "a783c98c-302b-4891-b2a1-3e863bac0254";
   const url = `https://api.hostfully.com/v1/properties?agencyUid=${uuid}&limit=20&offset=0`;
-  const properties: PropertyListType = _properties;
+  const properties: PropertyListType = _properties.sort();
 
   return (
     <>
-      <section className="columns-2 m-8">
-        {properties.map((property: PropertyType) => {
-          return <PropertyListing key={property.name} property={property} />;
+      <nav className="flex gap-8 container mx-8">
+        <div className="flex flex-col">
+          <label>Checkin</label>
+          <input type="date"></input>
+        </div>
+        <div className="flex flex-col">
+          <label>Checkout</label>
+          <input type="date"></input>
+        </div>
+        <div className="flex flex-col">
+          <label>Guests</label>
+          <input type="text"></input>
+        </div>
+      </nav>
+      <section className="m-8 columns-4">
+        {properties.map((property: PropertyType, index) => {;
+          return <PropertyListing key={index} index={index} property={property} />;
         })}
       </section>
     </>

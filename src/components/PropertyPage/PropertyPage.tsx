@@ -2,7 +2,7 @@ import { PropertyListType, PropertyType, _properties } from "@/constants";
 import styles from "./PropertyPage.module.css";
 
 interface PropertyPageProps {
-  id: number | string;
+  id: number;
 }
 
 export default function PropertyPage({ id }: PropertyPageProps) {
@@ -11,15 +11,13 @@ export default function PropertyPage({ id }: PropertyPageProps) {
 
   return (
     <div className={styles.PropertyPageComponent}>
-      <div>
-        <h1 className="text-2xl font-bold">{property.name}</h1>
-        {property.description}
-        Bedrooms: {property.bedrooms}
-        Bathrooms: {property.bathrooms}
+      <div className="p-8">
+        <h1 className="text-2xl my-8 font-bold">{property.name}</h1>
+        <p className="my-8">{property.description}</p>
         {property.photos.map((photo, index) => {
           return (
             <div key={index}>
-              <img src={photo.url} />{" "}
+              <img className="my-8" src={photo.url} />{" "}
             </div>
           );
         })}
