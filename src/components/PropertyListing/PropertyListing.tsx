@@ -15,8 +15,8 @@ export default function PropertyListing({
   return (
     <div key={index} className={styles.PropertyListingComponent}>
       <Link href={`/${index}`}>
-        <img src={property.photos[0].url} alt={property.name} />
-        <p className="text-xl text-bold uppercase my-2">{property.name}</p>
+        <img src={property.photos[0].url} alt={property?.name} />
+        <p className="text-xl text-bold uppercase my-2">{property?.name}</p>
         <span><UserIcon  className="h-4 w-4 inline-block text-black" />: {property.maximumGuests}</span>
         <span><HomeIcon  className="h-4 w-4 inline-block text-black" />: {property.bedrooms}</span>
 
