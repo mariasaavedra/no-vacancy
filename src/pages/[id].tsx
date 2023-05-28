@@ -4,20 +4,25 @@ import { useEffect } from "react";
 import axios from "axios";
 import { _properties, PropertyType, PropertyListType } from "@/constants";
 import PropertyListing from "@/components/PropertyListing/PropertyListing";
+import PropertyPage from "@/components/PropertyPage/PropertyPage";
+import { useRouter } from "next/router";
+import { isNumber } from "tailwind-merge/dist/lib/validators";
 
 export default function HomePage() {
   // SANDBOX
   const api_key = "TucP0tg7Qi2Gp4ET";
   const uuid = "a783c98c-302b-4891-b2a1-3e863bac0254";
   const url = `https://api.hostfully.com/v1/properties?agencyUid=${uuid}&limit=20&offset=0`;
-  const properties: PropertyListType = _properties;
+
+  const router = useRouter();
+  const id = router.query.id as string;
+
+  const _id = parseInt(id);
 
   return (
     <>
-      <section className="columns-2 m-8">
-        {properties.map((property: PropertyType) => {
-          return <PropertyListing key={property.name} property={property} />;
-        })}
+      <section className="m-8 columns-2">
+        <PropertyPage id={_id} />;
       </section>
     </>
   );
