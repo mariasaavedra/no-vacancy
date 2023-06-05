@@ -30,7 +30,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
       setPersister(storage);
     }
-  }, []);
+  }, [])
+  
   return (
     <>
       {persister !== null && persister !== undefined && (
@@ -43,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </PersistQueryClientProvider>
       )}
     </>
-  );
+  )
 }
 
 export default MyApp;
