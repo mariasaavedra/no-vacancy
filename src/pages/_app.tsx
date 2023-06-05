@@ -13,8 +13,8 @@ import { useEffect, useState } from "react";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
-      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+      staleTime: 0,
+      cacheTime: 0, // 24 hours
     },
   },
 });

@@ -25,12 +25,12 @@ export default function HomePage() {
 
   async function fetchPropertyDescription(uid: number | string) {
     try {
-      const res = await axios.get(`/propertydescriptions/${uid}`, {
+      const res = await axios.get(`/propertydescriptions`, {
         params: {
           propertyUid: uid,
         },
       });
-      return res.data;
+      return res.data[0];
     } catch (error) {
       console.error("err:" + error);
     }
@@ -83,6 +83,16 @@ export default function HomePage() {
                 <span>{propertyQuery.data.address1}, </span>
                 <span>{propertyQuery.data.city} </span>
                 <span>{propertyQuery.data.state} </span>
+              </div>
+
+              <div className="mt-8">
+                {propertyDescriptionQuery.data.summary }
+              </div>
+              <div className="mt-8">
+                {propertyDescriptionQuery.data.interaction }
+              </div>
+              <div className="mt-8">
+                {propertyDescriptionQuery.data.neighbourhood }
               </div>
             </section>
 

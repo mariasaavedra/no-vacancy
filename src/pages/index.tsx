@@ -41,8 +41,21 @@ export default function HomePage() {
   }
 
   return (
-    <div>
-      <h1>Listings</h1>
+    <div className="container p-16">
+      <nav className="mr-8 mb-8 flex gap-8">
+        <div className="flex flex-col">
+          <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">Checkin</label>
+          <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight" type="date"></input>
+        </div>
+        <div className="flex flex-col">
+          <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">Checkout</label>
+          <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight" type="date"></input>
+        </div>
+        <div className="flex flex-col">
+          <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">Guests</label>
+          <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight" type="number"></input>
+        </div>
+      </nav>
       <section className="columns-4">
       {propertyUidsQuery.data &&
         propertyUidsQuery.data.map((uid) => {

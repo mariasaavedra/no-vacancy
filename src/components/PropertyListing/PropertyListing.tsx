@@ -1,6 +1,6 @@
 import { PropertyType } from "@/constants";
 import styles from "./PropertyListing.module.css";
-import { HomeIcon, UserIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -9,11 +9,7 @@ interface PropertyListingProps {
   id: number | string;
 }
 
-export default function PropertyListing({
-  id,
-}: PropertyListingProps) {
-
-
+export default function PropertyListing({ id }: PropertyListingProps) {
   async function fetchProperty(uid: number | string) {
     try {
       const res = await axios.get(`/properties/${uid}`);
@@ -22,21 +18,39 @@ export default function PropertyListing({
       console.error("err:" + error);
     }
   }
-  
+
   const propertyQuery = useQuery({
-    queryKey: ['fetchProperty', id],
+    queryKey: ["fetchProperty", id],
     queryFn: () => fetchProperty(id),
-  })
+  });
 
   return (
-
-    <div key={id} className={styles.PropertyListingComponent}>
-      <Link href={`/properties/${id}`}>
-        <img src={propertyQuery.data.picture} alt={propertyQuery.data.name} />
-        <p className="text-xl text-bold uppercase my-2">{propertyQuery.data.name}</p>
-        <span><UserIcon  className="h-4 w-4 inline-block text-black" />: {propertyQuery.data.maximumGuests}</span>
-        <span><HomeIcon  className="h-4 w-4 inline-block text-black" />: {propertyQuery.data.bedrooms}</span>
-      </Link>
-    </div>
+    <>
+      {propertyQuery.data && (
+        <article>
+          <div key={id} className={styles.PropertyListingComponent}>
+            <Link href={`/properties/${id}`}>
+              <img
+                src={propertyQuery.data.picture}
+                alt={propertyQuery.data.name}
+              />
+              <p className="text-bold my-2 text-xl uppercase">
+                {propertyQuery.data.name}
+              </p>
+              <div>
+                <span className="mr-8 align-middle">
+                  <label className="mr-2">Guests:</label>
+                  {propertyQuery.data.maximumGuests}
+                </span>
+                <span className="mr-8 align-middle">
+                  <label className="mr-2">Beds:</label>
+                  {propertyQuery.data.bedrooms}
+                </span>
+              </div>
+            </Link>
+          </div>
+        </article>
+      )}
+    </>
   );
 }
